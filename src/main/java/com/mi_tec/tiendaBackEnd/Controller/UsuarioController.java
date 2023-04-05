@@ -2,7 +2,6 @@ package com.mi_tec.tiendaBackEnd.Controller;
 
 import com.mi_tec.tiendaBackEnd.Entity.EUsuario;
 import com.mi_tec.tiendaBackEnd.InterfaceS.IUsuarioService;
-import com.mi_tec.tiendaBackEnd.Service.ImpCarrito;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin (origins = "https://mi-tec.netlify.app")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController {
    
     @Autowired
