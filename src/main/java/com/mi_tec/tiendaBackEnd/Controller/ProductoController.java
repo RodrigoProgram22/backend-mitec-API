@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-//@CrossOrigin (origins = "https://mi-tec.netlify.app")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin (origins = "https://mi-tec.netlify.app")
 public class ProductoController {
     @Autowired
     IProductoService iProducS;
