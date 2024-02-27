@@ -1,4 +1,4 @@
 FROM amazoncorretto:11-alpine-jdk
 MAINTAINER MI-TEC
-COPY target/tienda-BackEnd-0.0.1.SNAPSHOT.jar mitec-app.jar
+COPY target/tienda-BackEnd-0.0.1-SNAPSHOT.jar mitec-app.jar
 ENTRYPOINT ["java","-jar","/mitec-app.jar"]
