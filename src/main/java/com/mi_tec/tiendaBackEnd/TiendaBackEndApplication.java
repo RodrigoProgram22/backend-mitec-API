@@ -1,5 +1,5 @@
 package com.mi_tec.tiendaBackEnd;
-//Subiendo BackEnd 8/8/2023
+//Subiendo BackEnd 27/2/2024
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
