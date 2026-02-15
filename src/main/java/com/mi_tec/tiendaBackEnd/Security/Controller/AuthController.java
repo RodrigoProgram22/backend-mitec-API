@@ -34,8 +34,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin (origins = "https://mitec.store/")
-//@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin (origins = "https://mitec.store/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 
     @Autowired
@@ -55,12 +55,19 @@ public class AuthController {
 
     @Autowired
     ImpCarrito carritoService;
-    
+
     @GetMapping("/usuario")
     public ResponseEntity<?> obtenerUsuario() {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        EUsuario usuario = usuarioService.buscarPorNombreUsuario(userDetails.getUsername());
-        return new ResponseEntity(usuario, HttpStatus.OK);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // 1. Verificamos si el usuario está realmente autenticado
+        if (principal instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) principal;
+            EUsuario usuario = usuarioService.buscarPorNombreUsuario(userDetails.getUsername());
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        }
+        // 2. Si no es UserDetails (es anonymousUser), enviamos un 401 controlado
+        // Esto evitará que el Front se cuelgue procesando un error 500
+        return new ResponseEntity<>("No hay una sesión activa", HttpStatus.UNAUTHORIZED);
     }
 
     @PostMapping("/nuevo")
@@ -91,7 +98,7 @@ public class AuthController {
         usuarioService.guardarUsuario(usuario);
         EUsuario nuevoUsuario = usuarioService.guardarUsuario(usuario);
         carritoService.crearCarrito(nuevoUsuario); // Crear un carrito para el nuevo usuario
-       
+
         return new ResponseEntity(new Mensaje("Usuario guardado"), HttpStatus.CREATED);
     }
 

@@ -1,9 +1,8 @@
 package com.mi_tec.tiendaBackEnd.Entity;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,10 +15,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Getter @Setter
 @Table(name = "carrito")
 public class ECarrito {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_carrito;
@@ -31,8 +29,8 @@ public class ECarrito {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "carrito_productos",
-           joinColumns = @JoinColumn(name = "id_carrito"),
-           inverseJoinColumns = @JoinColumn(name = "id_producto"))
+            joinColumns = @JoinColumn(name = "id_carrito"),
+            inverseJoinColumns = @JoinColumn(name = "id_producto"))
     private List<EProducto> productos = new ArrayList<>();
 
     public void agregarProducto(EProducto producto) {
@@ -42,7 +40,32 @@ public class ECarrito {
     public void eliminarProducto(EProducto producto) {
         this.productos.remove(producto);
     }
+
     // Constructor vacío
     public ECarrito() {
+    }
+
+    public EUsuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(EUsuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<EProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<EProducto> productos) {
+        this.productos = productos;
+    }
+
+    public Long getId_carrito() {
+        return id_carrito; // Cambia el "throw new..." por esto
+    }
+
+    public void setId_carrito(Long id_carrito) {
+        this.id_carrito = id_carrito;
     }
 }

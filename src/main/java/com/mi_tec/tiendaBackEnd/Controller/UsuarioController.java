@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin (origins = "https://mitec.store/")
-//@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin (origins = "https://mitec.store/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController {
    
     @Autowired
