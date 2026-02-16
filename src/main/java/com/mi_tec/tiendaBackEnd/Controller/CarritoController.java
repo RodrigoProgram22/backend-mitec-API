@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin (origins = "https://mitecrodri.online/")
+@CrossOrigin (origins = "https://mitecrodri.online")
 //@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/carrito")
 public class CarritoController {
