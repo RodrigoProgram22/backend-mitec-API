@@ -59,7 +59,6 @@
     </dependencies>
 
     <build>
-          <finalName>tienda-backend</finalName> 
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
